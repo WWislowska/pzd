@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 class Population:
 
-    _instances: set[Creature]
-    history: list[int]
+    _instances: set[Creature] #wszystkie aktualnie zyjace Creature
+    history: list[int] #historia liczebnosci populacji
 
     def __init__(self, n: int, **kwargs):
 

@@ -20,7 +20,61 @@ class Creature:
         if self.alive and (random.random() < self.p_reproduce):
 
             # 1. Consider changing p_death, p_reproduce to have instances different from the parent
-            # 2. TODO: Change creature class to different one.
-            return Creature(p_death=self.p_death, p_reproduce=self.p_reproduce)
+            return self.__class__(p_death=self.p_death, p_reproduce=self.p_reproduce)
 
         return None
+
+    # TODO: Implement it as descriptors
+    @property
+    def p_death(self):
+
+        return self.__p_death
+
+    @p_death.setter
+    def p_death(self, value):
+
+        # Makes sure that 0 <= value <= 1
+        value = min(1.0, max(0.0, value))
+
+        self.__p_death = value
+
+    @property
+    def p_reproduce(self):
+
+        return self.__p_reproduce
+
+    @p_reproduce.setter
+    def p_reproduce(self, value):
+
+        # Makes sure that 0 <= value <= 1
+        value = min(1.0, max(0.0, value))
+
+        self.__p_reproduce = value
+
+
+class Prey(Creature):
+    def __init__(self, p_death: float, p_reproduce: float, p_hunt):
+        super().__init__(p_death, p_reproduce)
+        self.p_hunt = p_hunt
+
+class Predator(Creature):
+        p_death_hungry: float = 0.9
+
+    def __init__(self, p_death: float = p_death_hungry, p_reproduce: float, hungry: bool):
+        super().__init__(p_death. p_reproduce)
+        self.hungry = hungry
+
+    def hunt(prey: Prey)
+
+        if self.hungry and random.random() < pray.p_hunt:
+            prey.alive = False
+            self.hungry = False
+        
+        else:
+            self.hungry = True
+        
+    def kill():
+        if self.hungry:
+            super.kill()
+
+
